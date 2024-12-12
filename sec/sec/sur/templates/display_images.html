@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Display Images</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .blue-shadow {
+        box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1),
+          0 1px 3px rgba(0, 123, 255, 0.08);
+      }
+      .heading-bg {
+        background-color: #007bff;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+      }
+      .stylish-text {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto p-8">
+      <h1 class="text-3xl font-bold text-center mb-8 heading-bg stylish-text">
+        Detected Objects Images
+      </h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for alert in alerts %}
+        <div class="bg-white rounded-lg blue-shadow overflow-hidden">
+          <div class="p-4 stylish-text">
+            <h2 class="text-xl font-semibold mb-2">{{ alert.timestamp }}</h2>
+            <p class="text-gray-700 mb-4">
+              Distance: {{ alert.distance }} meters
+            </p>
+            <img
+              src="data:image/jpeg;base64,{{ alert.image }}"
+              alt="Motion Image"
+              class="w-full h-auto"
+            />
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

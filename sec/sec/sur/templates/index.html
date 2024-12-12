@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Surveillance System</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+      }
+
+      .navbar {
+        background-color: #007bff;
+      }
+
+      .navbar-brand {
+        color: white !important;
+      }
+
+      .navbar-nav .nav-link {
+        color: white !important;
+      }
+
+      .logout-btn {
+        background-color: #ff5c5c;
+        color: white !important;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-left: 20px;
+      }
+
+      .logout-btn:hover {
+        background-color: #ff2e2e;
+        color: white !important;
+      }
+
+      .navbar-username {
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        margin: 0 20px;
+        text-align: center;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 0.7;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .hero-section {
+        text-align: center;
+        padding: 100px 20px;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Ffree-vector%2Fcover-page-technology&psig=AOvVaw1tzQMREm3IfGkpItPF3SfE&ust=1722274493866000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDm28yiyocDFQAAAAAdAAAAABAE")
+            center/cover no-repeat;
+        color: white;
+        background-color: #007bff; /* Set background color to blue */
+      }
+
+      .btn-custom {
+        background-color: #007bff;
+        color: white;
+        border: none;
+      }
+
+      .btn-custom:hover {
+        background-color: #0056b3;
+      }
+
+      #features {
+        padding: 50px 0;
+      }
+
+      #features .col-md-4 {
+        margin-bottom: 30px;
+      }
+
+      #features h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+      }
+
+      #features p {
+        font-size: 1rem;
+        color: #6c757d;
+      }
+
+      #features .col-md-4 {
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      #check-live,
+      #object-detect {
+        padding: 50px 0;
+        text-align: center;
+        background-color: #e9ecef;
+        margin-top: 30px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+      }
+
+      #check-live h2,
+      #object-detect h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      #check-live p,
+      #object-detect p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        color: #6c757d;
+      }
+
+      #check-live .btn,
+      #object-detect .btn {
+        padding: 10px 20px;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .animate-pulse {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .live-btn {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 50%;
+        animation: blink 1s infinite;
+      }
+
+      .alert-box {
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .alert-box h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: #007bff;
+      }
+
+      .alert-box p {
+        font-size: 1rem;
+        color: #6c757d;
+      }
+
+      .alert-icon {
+        font-size: 2rem;
+        color: #007bff;
+        margin-bottom: 15px;
+      }
+
+      .footer {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Ffree-vector%2Fcover-page-technology&psig=AOvVaw1tzQMREm3IfGkpItPF3SfE&ust=1722274493866000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDm28yiyocDFQAAAAAdAAAAABAE")
+            center/cover no-repeat;
+        color: white;
+        background-color: #007bff;
+        padding: 40px 0;
+        text-align: center;
+      }
+      .footer .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .footer .footer-section {
+        flex: 1;
+        min-width: 250px;
+        padding: 10px;
+      }
+      .footer .footer-section h3 {
+        margin-bottom: 20px;
+      }
+      .footer .footer-section p,
+      .footer .footer-section a {
+        color: #bdc3c7;
+        text-decoration: none;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .footer .footer-section a:hover {
+        color: #ecf0f1;
+      }
+      .footer .footer-section a {
+        margin: 0 10px;
+        font-size: 20px;
+        color: #bdc3c7;
+      }
+      .footer .footer-section a:hover {
+        color: #ecf0f1;
+      }
+      .footer .footer-bottom {
+        margin-top: 30px;
+        border-top: 1px solid #7f8c8d;
+        padding-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#">Home Surveillance System</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#features">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#check-live">Check Live</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#object-detect">Object Detection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#alert-notifications">Alerts</a>
+          </li>
+        </ul>
+        <span class="navbar-username animate__animated animate__fadeIn"
+          >Welcome, {{ user.username }}!</span
+        >
+        <form action="{% url 'logout' %}" method="post" style="display: inline">
+          {% csrf_token %}
+          <button type="submit" class="logout-btn">Logout</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="hero-section">
+      <h1 class="display-4 animate__animated animate__fadeInDown">
+        Welcome to Home Surveillance System
+      </h1>
+      <p class="lead animate__animated animate__fadeInUp">
+        Your safety, our priority
+      </p>
+      <a
+        href="#features"
+        class="btn btn-lg btn-custom animate__animated animate__fadeInUp"
+        >Learn More</a
+      >
+    </div>
+
+    <section id="features" class="container mt-5">
+      <div class="row">
+        <div class="col-md-4 animate__animated animate__fadeInLeft">
+          <h2>Real-time Monitoring</h2>
+          <p>Keep an eye on your home in real-time from anywhere.</p>
+        </div>
+        <div class="col-md-4 animate__animated animate__fadeInUp">
+          <h2>Instant Alerts</h2>
+          <p>
+            Receive instant notifications when something unusual is detected.
+          </p>
+        </div>
+        <div class="col-md-4 animate__animated animate__fadeInRight">
+          <h2>Secure Storage</h2>
+          <p>
+            Your surveillance data is stored securely and is easily accessible.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="check-live" class="container mt-5">
+      <div class="row">
+        <div class="col-md-12 animate__animated animate__zoomIn animate-pulse">
+          <h2>Check Live</h2>
+          <p>Watch live surveillance feeds from your home at any time.</p>
+          <a href="{% url 'home' %}" class="btn btn-lg btn-custom"
+            >Go to Live Feed <button class="live-btn">LIVE</button></a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section id="object-detect" class="container mt-5">
+      <div class="row">
+        <div class="col-md-12 animate__animated animate__zoomIn">
+          <h2>Object Detection</h2>
+          <p>
+            Automatically detect and identify objects in the surveillance
+            footage.
+          </p>
+          <a href="{% url 'display_images' %}" class="btn btn-lg btn-custom"
+            >Start Object Detection</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section id="alert-notifications" class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 animate__animated animate__fadeInLeft alert-box">
+          <div class="alert-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h2>Email Alerts</h2>
+          <p>Receive instant email notifications for any detected events.</p>
+        </div>
+        <div class="col-md-6 animate__animated animate__fadeInRight alert-box">
+          <div class="alert-icon">
+            <i class="fas fa-sms"></i>
+          </div>
+          <h2>SMS Alerts</h2>
+          <p>Get SMS notifications directly to your mobile device.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section about">
+          <h3>About Us</h3>
+          <p>
+            Home Security Cam is dedicated to providing top-notch security
+            solutions to ensure the safety and peace of mind for our customers.
+          </p>
+        </div>
+        <div class="footer-section links">
+          <h3>Quick Links</h3>
+          <a href="{% url 'home' %}">Check Live</a>
+          <a href="{% url 'display_images' %}">Object Detection</a>
+          <a href="#features">Services</a>
+        </div>
+        <div class="footer-section contact">
+          <h3>Contact Us</h3>
+          <p>Email: homesec0530@outlook.com</p>
+          <p>Phone: +91 9999989898</p>
+          <p>Address: Gujarat</p>
+        </div>
+        <div class="footer-section socials">
+          <h3>Team Members</h3>
+          <a href="#">Mit Patel</a>
+          <a href="#">Harsh Patil</a>
+          <a href="#">Shalin Patel</a>
+          <a href="#">Yash Patel</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2024 Home Security Cam | All Rights Reserved
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </body>
+</html>

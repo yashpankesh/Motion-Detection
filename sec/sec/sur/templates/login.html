@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f7f7f7;
+        font-family: Arial, sans-serif;
+      }
+
+      h2 {
+        color: #007bff;
+      }
+
+      .login-container {
+        width: 400px;
+        height: 400px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1),
+          0 1px 3px rgba(0, 123, 255, 0.08);
+        margin: auto;
+        margin-top: 100px;
+        padding: 20px;
+        transition: transform 0.3s ease;
+      }
+
+      .login-container:hover {
+        transform: scale(1.05);
+      }
+
+      .form-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .form-button:hover {
+        background-color: #0056b3;
+      }
+
+      .form-input {
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      .form-label {
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2 class="text-center text-2xl font-semibold mb-6">Log In</h2>
+      <form method="post">
+        {% csrf_token %}
+        <div class="mb-4">
+          <label for="id_username" class="form-label">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="id_username"
+            class="form-input"
+            placeholder="Username"
+            required
+          />
+        </div>
+        <div class="mb-6">
+          <label for="id_password" class="form-label">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="id_password"
+            class="form-input"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <button type="submit" class="form-button">Log In</button>
+      </form>
+      <p class="mt-4 text-center">
+        Don't have an account?
+        <a href="{% url 'signup' %}" class="text-blue-500 hover:underline"
+          >Sign Up</a
+        >
+      </p>
+    </div>
+  </body>
+</html>

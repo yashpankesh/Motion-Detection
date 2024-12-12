@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f3f4f6; /* Light grey background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .signup-container {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1),
+          0 1px 3px rgba(0, 123, 255, 0.08);
+        padding: 20px;
+        width: 100%;
+        max-width: 400px;
+        height: 500px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .signup-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 123, 255, 0.2),
+          0 2px 4px rgba(0, 123, 255, 0.1);
+      }
+
+      h2 {
+        color: #007bff; /* Blue color for heading */
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      button {
+        background-color: #007bff; /* Blue background */
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      .form-group input:focus {
+        border-color: #007bff; /* Blue border on focus */
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-container">
+      <h2 class="text-center text-2xl font-semibold mb-6">Sign up</h2>
+      <form action="{% url 'signup' %}" method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Sign Up</button>
+      </form>
+      <p class="mt-4 text-center">
+        Already have an account?
+        <a href="{% url 'login' %}" class="text-blue-500 hover:underline"
+          >Log In</a
+        >
+      </p>
+    </div>
+  </body>
+</html>
